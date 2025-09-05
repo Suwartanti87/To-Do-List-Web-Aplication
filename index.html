@@ -5,48 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List Web Aplication</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../To-Do-List-Web-Aplication/css/style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
 
 <body>
-<div>
-<header>
+
+<div class="container">
     <h1>To Do List</h1>
-</header>
+    <div class="todo-input-section">
+        <input type="text" id="todo-input" placeholder="What To Do...">
+        <input type="date" id="todo-date-input" placeholder="Select date">
+        <button type="button" id="add-todo-button" onclick="validateInput();">Add</button>
+        <button id="deleteAllBtn">DELETE ALL</button>
+    </div>
+    <div class="filter-section">
+        <select id="filter" onchange="filterTodo();">
+        <option value="">ALL</option>
+        <option value="pending">Pending</option>
+        <option value="done">Done</option>
+        </select>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>TASK</th>
+                <th>DUE DATE</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody id="todo-list">
+            <tr>
+                <td colspan="4" class="empty">No task found</td>
+            </tr>
+        </tbody>
+    </table>
+    
 
-<main>
-    <section id="todo-input-section" class="py-[16px]">
-        <form action="">
-            <input type="text" class="border-b p2" id="todo-input" placeholder="What To Do...">
-            <input type="date" class="border-b p2" id="todo-date-input" placeholder="Select date">
-            <button type="button" id="add-todo-button" onclick="validateInput();" class="bg-blue-500 text-white px-4 py-2">Add</button>
-        </form>
-    </section>
-
-    <section class="flex justify-between">
-        <button class="bg-green-500 text-white px-4 py-2">
-            Filter
-        </button>
-        <button class="bg-red-500 text-white px-4 py-2" onclick="deleteAllTodo();">
-            Delete All Task
-        </button>
-    </section>
-
-    <section class="py-[16px]">
-        <h2 class="text-x1 font-bold">List of To Do</h2>
-
-        <ul id="todo-list" class="text-center">
-            <p>No Task Add</p>
-        </ul>
-    </section>
-
-</main>
-
-<footer>
     <p>&copy;2025 Tanti To Do List</p>
-</footer>
-</div>  
-<script src="js/script.js"></script>
+</div>
+
+<script src="../To-Do-List-Web-Aplication/js/script.js"></script>
 </body>
 </html>

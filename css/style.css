@@ -1,9 +1,97 @@
 body {
-    height: 100vh;
-    justify-items: center;
-    align-content: center;
-    background-color: lightblue; 
-   
+  font-family: Arial, sans-serif;
+  background: url("../img/mountain.jpg") no-repeat center center fixed;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+    
 }
 
+.container {
+  background: rgba(17, 30, 64, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.todo-input-section,
+.filter-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+input[type="text"],
+input[type="date"] {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+#deleteAllBtn {
+  background: #dc3545;
+}
+
+#deleteAllBtn:hover {
+  background: #a71d2a;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: #1f4068;
+}
+
+tr:nth-child(even) {
+  background: #162447;
+}
+
+.status-done {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.empty {
+  text-align: center;
+  color: #888;
+}
+
+p{
+    text-align: center;
+}
