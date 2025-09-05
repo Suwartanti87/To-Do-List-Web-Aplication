@@ -27,21 +27,14 @@ function addTodo(todo, dueDate){
     todoList.push(todoItem);
 
     //simpan ke lokal strirage
-    SVGAnimatedPreserveAspectRatio();
+    saveData();
 
 //  render todo list
 renderTodoList();
 }
 
 
-// Hapus To do list
-function deleteAllTodo(){
-    // hapus todo list array
-    todoList = [];
 
-    // re render to do list
-    renderTodoList();
-}
 
 // filter
 
@@ -60,31 +53,71 @@ function renderTodoList(filterStatus =''){
         filteredTodos = todoList.filter(item => !item.completed);
     }
     if(filteredTodos.length === 0 ){
-        todoListContainer.innerHTML = 
-        <tr>
-            <td coolspan="4" class="empty">No Task Found</td>
-        </tr>;
+        todoListContainer.innerHTML = `
+        <tr><td coolspan="4" class="empty">No Task Found</td></tr>`;
         return;
     }
 
     filteredTodos.forEach((item, index) =>{
-        todoListContainer.innerHTML +='
-        <tr>
-        <td>${item.task}</td>
+        todoListContainer.innerHTML +=`<tr><td>${item.task}</td>
         <td>${item.dueDate}</td>
         <td class="${item.completed? 'status-done' : 'status-pending' }">${item.completed ? 'Done' : 'Pending' }</td>
-        <td>
-            <button onclick = "toggleStatus(${index})">✔</button>
-            <button onclick = "deleteTodo(${index})">✖</button>
+        <td><button onclick = "toggleStatus(${index})">✔</button>
+        <button onclick = "deleteTodo(${index})">✖</button>
         </td>
-        </tr>';
+        </tr>
+        `;
     });
 }
+
+//Toogle Status
+function toggleStatus(index){
+    todoList[index].completed = !todoList[index].completed;
+    saveData();
+    renderTodoList();
+}
+ 
+// Delete todo
+function deleteTodo(index){
+    todoList.splice(index,1);
+    saveData();
+    renderTodoList();
+}
+
+// Hapus To do list all
+function deleteAllTodo(){
+    // hapus todo list array
+    todoList = [];
+
+    saveData();
+
+    // re render to do list
+    renderTodoList();
+}
+
+// save data ke lokal strorage
+function saveData(){
+    localStorage.setItem('todoList', JSON.stringify('todoList'));
+}
+
+//load data dari lokal strorage
+function loadData(){
+    const save = localStorage.getItem('todoList');
+    if(save){
+        todoList = JSON.parse(save);
+    } renderTodoList();
+}
+//filter by status
+function filterTodo(){
+    const filterInput = document.getElementById('filter').value;
+    renderTodoList(filterInput);
+}
+
 
     // loop throught the todolist array and create html elemen for each item
-    todoList.forEach((item)=>{
-        todoListContainer.innerHTML+=`<p> ${item.task} - Due: ${item.dueDate}</p>`;
+//     todoList.forEach((item)=>{
+//         todoListContainer.innerHTML+=`<p> ${item.task} - Due: ${item.dueDate}</p>`;
 
-    });
+//     });
 
-}
+// }
